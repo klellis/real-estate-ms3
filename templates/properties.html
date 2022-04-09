@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Properties</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-	<script src="index.js"></script>
-
-    
+{% extends "base.html" %}
+{% block content %}
+<h2> Im extending the base template </h2>
 {% for property in properties %}
     {{ property.property_type }} <br>
     {{ property.city }} <br>
     {{ property.price}} <br>
     {{ property.description}} <br>
 {% endfor %}
-  </body>
-</html>
+
+{% endblock %}
