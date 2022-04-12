@@ -7,3 +7,7 @@
     $('.slider').slider();
   });
         
+  
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
