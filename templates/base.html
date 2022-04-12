@@ -33,7 +33,7 @@
           >
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('get_properties') }}">Home</a></li>
-            <li><a href="#">My Profile</a></li>
+            <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
             <li><a href="#">Log Out</a></li>
             <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -43,7 +43,7 @@
       <!-- side nav !-->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('get_properties') }}">Home</a></li>
-        <li><a href="#">My Profile</a></li>
+        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
         <li><a href="#">Log Out</a></li>
         <li><a href="{{ url_for('login') }}">Log In</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
