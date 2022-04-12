@@ -2,3 +2,8 @@
     $('.sidenav').sidenav();
   });
       
+
+  $(document).ready(function(){
+    $('.slider').slider();
+  });
+        
