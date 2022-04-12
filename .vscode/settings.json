@@ -26,5 +26,9 @@
    "editor.defaultFormatter": "HookyQR.beautify",
    "[django-html]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
-   }
+   },
+   "[python]": {
+      "editor.defaultFormatter": "ms-python.python"
+   },
+   "python.formatting.provider": "black"
 }

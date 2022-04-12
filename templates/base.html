@@ -35,7 +35,7 @@
             <li><a href="{{ url_for('get_properties') }}">Home</a></li>
             <li><a href="#">My Profile</a></li>
             <li><a href="#">Log Out</a></li>
-            <li><a href="#">Log In</a></li>
+            <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
           </ul>
         </div>
@@ -45,7 +45,7 @@
         <li><a href="{{ url_for('get_properties') }}">Home</a></li>
         <li><a href="#">My Profile</a></li>
         <li><a href="#">Log Out</a></li>
-        <li><a href="#">Log In</a></li>
+        <li><a href="{{ url_for('login') }}">Log In</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
       </ul>
     </header>
@@ -55,7 +55,7 @@
         {% if messages %} 
             {% for message in messages %} 
                 <div class="row flashes">
-                    <h4> </h4>
+                    <h4> {{ message }}</h4>
                 </div>
             {% endfor %} 
         {% endif %} 
