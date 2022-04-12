@@ -33,33 +33,44 @@
           >
           <ul class="right hide-on-med-and-down">
             <li><a href="{{ url_for('get_properties') }}">Home</a></li>
-            <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-            <li><a href="#">Log Out</a></li>
+            {% if session.user %}
+            <li>
+              <a href="{{ url_for('profile', username=session['user']) }}"
+                >My Profile</a
+              >
+            </li>
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+            {% else %}
             <li><a href="{{ url_for('login') }}">Log In</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
       <!-- side nav !-->
       <ul class="sidenav" id="mobile-demo">
         <li><a href="{{ url_for('get_properties') }}">Home</a></li>
-        <li><a href="{{ url_for('profile', username=session['user']) }}">My Profile</a></li>
-        <li><a href="#">Log Out</a></li>
+        {% if session.user %}
+        <li>
+          <a href="{{ url_for('profile', username=session['user']) }}"
+            >My Profile</a
+          >
+        </li>
+        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+        {% else %}
         <li><a href="{{ url_for('login') }}">Log In</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
+        {% endif %}
       </ul>
     </header>
     <section>
       <!-- flash messages -->
-      {% with messages = get_flashed_messages() %} 
-        {% if messages %} 
-            {% for message in messages %} 
-                <div class="row flashes">
-                    <h4> {{ message }}</h4>
-                </div>
-            {% endfor %} 
-        {% endif %} 
-      {% endwith %}
+      {% with messages = get_flashed_messages() %} {% if messages %} {% for
+      message in messages %}
+      <div class="row flashes">
+        <h4>{{ message }}</h4>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
     </section>
     <main class="container">{% block content %} {% endblock%}</main>
     <script
