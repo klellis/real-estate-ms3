@@ -9,6 +9,10 @@
     </div>  
   </div>
 </div>
-
+{% for property in my_properties %}
+{{ property.city }}
+{{ property.description }}
+{{ property.price}}
+{% endfor %}
 
 {% endblock %}

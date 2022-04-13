@@ -86,7 +86,8 @@ def profile(username):
         {"username": session["user"]})["username"]
     
     if session["user"]:
-        return render_template("profile.html", username=username)
+        my_properties = mongo.db.properties.find({ "created_by": username })
+        return render_template("profile.html", username=username, my_properties=my_properties)
     
     return redirect(url_for("login"))
 
@@ -114,8 +115,8 @@ def list_property():
        mongo.db.properties.insert_one(listing)
        flash("Property Listing Successful!")
        return redirect(url_for("get_properties"))
-   
-    property_type = mongo.db.type.find().sort("property_type", 1)
+        # grabs every instance of property type, need to figure out how to aggregate
+    property_type = list(mongo.db.properties.find().sort("property_type", 1))
     return render_template("list_property.html", property_type=property_type)
 
 
