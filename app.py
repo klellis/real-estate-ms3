@@ -101,7 +101,8 @@ def logout():
 
 @app.route("/list_property")
 def list_property():
-    return render_template("list_property.html")
+    property_type = mongo.db.type.find().sort("property_type", 1)
+    return render_template("list_property.html", property_type=property_type)
 
 
 if __name__ == "__main__":

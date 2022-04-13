@@ -1,10 +1,9 @@
- $(document).ready(function(){
-    $('.sidenav').sidenav();
-  });
-      
+
 
   $(document).ready(function(){
     $('.slider').slider();
+    $('select').formSelect();
+    $('.sidenav').sidenav();
   });
         
 
