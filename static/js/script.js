@@ -4,6 +4,7 @@
     $('.slider').slider();
     $('select').formSelect();
     $('.sidenav').sidenav();
+    $('.collapsible').collapsible();
   });
         
 

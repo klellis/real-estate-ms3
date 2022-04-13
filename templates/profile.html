@@ -14,6 +14,15 @@
   <h4> My Properties </h4>
   {% for property in my_properties %}
 <div class="card large">
+  <div class="col s3">
+
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header"><i class="material-icons">expand_more</i>Options</div>
+      <div class="collapsible-body"><span><a class="waves-effect waves-light btn-small">Edit</a>
+        <a class="waves-effect waves-light btn-small">Done</a></span></div>
+    </li>
+  </div>
 <div class="card-image">
 <img src="{{ property.img_url[0] }}" alt="">
 </div>
