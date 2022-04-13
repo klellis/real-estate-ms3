@@ -20,18 +20,18 @@
 </div>
 
 <!-- main property section -->
-<div class="col s12 m6 l4">
+<div class="col s12 m12 l12">
     {% for house in houses %}
 	<div class="card large">
 	<div class="card-image">
 	<img src="{{ house.img_url[0] }}" alt="">
 	</div>
 	<div class="card-content">
-		<p>With .large added to .card.</p>
-		<p>Now the sizing class is utilized within the card-content area alone and better controls how much is allowed in the card-content area. The grid + our css controls our image sizing.</p>
+		<p><strong>£{{ house.price }}</strong></p>
+		<p>{{ house.description }}</p>
 	</div>
 	<div class="card-action">
-		<a href="#">This is a link</a>
+		<a href="#">More Info</a>
 	</div>
 	</div>
 	</div>

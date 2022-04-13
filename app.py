@@ -99,5 +99,10 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/list_property")
+def list_property():
+    return render_template("list_property.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)
