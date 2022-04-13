@@ -9,10 +9,24 @@
     </div>  
   </div>
 </div>
-{% for property in my_properties %}
-{{ property.city }}
-{{ property.description }}
-{{ property.price}}
+
+<div class="col s12 m12 l12">
+  <h4> My Properties </h4>
+  {% for property in my_properties %}
+<div class="card large">
+<div class="card-image">
+<img src="{{ property.img_url[0] }}" alt="">
+</div>
+<div class="card-content">
+  <p><strong>£{{ property.price }}</strong></p>
+  <p>{{ property.description }}</p>
+</div>
+<div class="card-action">
+  <a href="#">More Info</a>
+</div>
+</div>
+</div>
 {% endfor %}
+</div>
 
 {% endblock %}
