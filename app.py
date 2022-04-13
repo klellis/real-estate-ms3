@@ -21,7 +21,8 @@ mongo = PyMongo(app)
 @app.route("/get_properties")
 def get_properties():
     properties = mongo.db.properties.find()
-    return render_template("properties.html", properties=properties)
+    houses = mongo.db.properties.find()
+    return render_template("properties.html", properties=properties, houses=houses)
 
 
 @app.route("/register", methods=["GET", "POST"])

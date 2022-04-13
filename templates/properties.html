@@ -1,66 +1,42 @@
-{% extends "base.html" %} {% block content %} 
+{% extends "base.html" %} {% block content %}
 <br />
 
 <div class="slider">
   <ul class="slides">
-    {% for property in properties %}
-    {% if property.featured %}
+    {% for property in properties %} {% if property.featured %}
     <li>
       <img class="materialboxed" src="{{ property.img_url[0] }}" />
       <!-- random image -->
       <div class="caption center-align">
-        <h3>{{ property.property_type }} property in {{ property.city }} </h3>
-        <h5 class="light grey-text text-lighten-3">{{ property.description }}</h5>
+        <h3>{{ property.property_type }} property in {{ property.city }}</h3>
+        <h5 class="light grey-text text-lighten-3">
+          {{ property.description }}
+        </h5>
         <h5 class="light grey-text text-lighten-3">£{{ property.price }}</h5>
       </div>
     </li>
-    {% endif %}
-    {% endfor %}
+    {% endif %} {% endfor %}
   </ul>
 </div>
 
-<div class="row">
-    <div class="col s12 m4">
-      <div class="card">
-        <div class="card-image">
-<div class="carousel carousel-slider center" data-indicators="true">
-<div class="carousel-fixed-item center">
-  
-  <a class="btn waves-effect white grey-text darken-text-2">button</a>
+<!-- main property section -->
+<div class="col s12 m6 l4">
+    {% for house in houses %}
+	<div class="card large">
+	<div class="card-image">
+	<img src="{{ house.img_url[0] }}" alt="">
+	</div>
+	<div class="card-content">
+		<p>With .large added to .card.</p>
+		<p>Now the sizing class is utilized within the card-content area alone and better controls how much is allowed in the card-content area. The grid + our css controls our image sizing.</p>
+	</div>
+	<div class="card-action">
+		<a href="#">This is a link</a>
+	</div>
+	</div>
+	</div>
+  {% endfor %}
 </div>
-<div class="carousel-item red white-text" href="#one!">
-  
-  <h2>First Panel</h2>
-
-  <p class="white-text">This is your first panel</p>
-</div>
-
-<div class="carousel-item amber white-text" href="#two!">
-  <h2>Second Panel</h2>
-  <p class="white-text">This is your second panel</p>
-</div>
-<div class="carousel-item green white-text" href="#three!">
-  <h2>Third Panel</h2>
-  <p class="white-text">This is your third panel</p>
-</div>
-<div class="carousel-item blue white-text" href="#four!">
-  <h2>Fourth Panel</h2>
-  <p class="white-text">This is your fourth panel</p>
-</div>
-</div>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
-        </div>
-        <div class="card-action">
-          <a href="#">This is a link</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
-
-  
 {% endblock %}
