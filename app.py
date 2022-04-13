@@ -123,7 +123,7 @@ def list_property():
 @app.route("/edit_property/<property_id>", methods=["GET", "POST"])
 def edit_property(property_id):
     property = mongo.db.properties.find_one({"_id": ObjectId(property_id)})
-    property_type = mongo.db.properties.find().sort("property_type", 1)
+    property_type = mongo.db.type.find().sort("property_type", 1)
     return render_template("edit_property.html", property=property, property_type=property_type)
 
 

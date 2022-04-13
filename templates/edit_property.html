@@ -11,7 +11,11 @@
                 <select id="property_type" name="property_type" class="validate" required>
                   <option value="" disabled selected>Select Property Type</option>
                   {% for type in property_type %}
-                  <option value="{{ type.property_type }}">{{ type.property_type }}</option>
+                    {% if type.property_type == property.property_type %}
+                    <option value="{{ type.property_type }}" selected>{{ type.property_type }}</option>
+                    {% else %}
+                    <option value="{{ type.property_type }}">{{ type.property_type }}</option>
+                    {% endif %}
                   {% endfor %}
                 </select>
                 <label id="property_type">Property Type</label>
@@ -21,25 +25,25 @@
           <!-- Price -->
         <div class="input-field col s12">
           <i class="material-icons prefix">currency_pound</i>
-          <input id="price" name="price" minlength="5" maxlength="50" type="text" class="validate" required>
+          <input id="price" name="price" minlength="5" maxlength="50" type="text" class="validate" value="{{ property.price }}" required>
           <label for="price">Price</label>
         </div>
         <!-- Location -->
         <div class="input-field col s12">
           <i class="material-icons prefix">place</i>
-          <input id="city" name="city" minlength="5" maxlength="50" type="tel" class="validate" required>
+          <input id="city" name="city" minlength="5" maxlength="50" type="tel" class="validate"  value="{{ property.city }}" required>
           <label for="city">Town/City</label>
         </div>
          <!-- Bedrooms-->
         <div class="input-field col s12">
             <i class="material-icons prefix">bedroom_parent</i>
-            <input id="bedrooms" name="bedrooms" minlength="1" type="tel" class="validate" required>
+            <input id="bedrooms" name="bedrooms" minlength="1" type="tel" class="validate" value="{{ property.bedrooms }}"required>
             <label for="bedrooms">Number of Bedrooms</label>
           </div>
           <!-- Add description -->
           <div class="input-field col s12">
             <i class="material-icons prefix">description</i>
-            <textarea id="description" name="description" minlength="15" maxlength="200" lass="materialize-textarea validate" required></textarea>
+            <textarea id="description" name="description" minlength="15" maxlength="200" class="materialize-textarea validate" required>{{ property.description }}</textarea>
             <label for="description">Description</label>
           </div>
           <div class="col s12">
@@ -70,8 +74,10 @@
       <!-- Submit Button -->
       <div class="row">
           <div class="col s12 center-align">
+            <!-- cancel button -->
+            <a href="{{ url_for('get_properties') }}" class="btn-large red">Cancel <i class="material-icons prefix">close</i></a>
               <button type="submit" class="btn-large">
-                Edit Property <i class="material-icons prefix">add</i>
+                Done <i class="material-icons prefix">add</i>
               </button>
           </div>
       </div>
