@@ -116,8 +116,15 @@ def list_property():
        flash("Property Listing Successful!")
        return redirect(url_for("get_properties"))
         # grabs every instance of property type, need to figure out how to aggregate
-    property_type = list(mongo.db.properties.find().sort("property_type", 1))
+    property_type = list(mongo.db.type.find().sort("property_type", 1))
     return render_template("list_property.html", property_type=property_type)
+
+
+@app.route("/edit_property/<property_id>", methods=["GET", "POST"])
+def edit_property(property_id):
+    property = mongo.db.properties.find_one({"_id": ObjectId(property_id)})
+    property_type = mongo.db.properties.find().sort("property_type", 1)
+    return render_template("edit_property.html", property=property, property_type=property_type)
 
 
 if __name__ == "__main__":
