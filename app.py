@@ -99,8 +99,22 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/list_property")
+@app.route("/list_property", methods=["GET", "POST"])
 def list_property():
+    if request.method == "POST":
+       listing = {
+           "property_type": request.form.get("property_type"), 
+           "price": request.form.get("price"),
+           "city": request.form.get("city"),
+           "bedrooms": request.form.get("bedrooms"), 
+           "description": request.form.get("description"),
+           "img_url": request.form.getlist("img_url"),
+           "created_by": session["user"]
+       }
+       mongo.db.properties.insert_one(listing)
+       flash("Property Listing Successful!")
+       return redirect(url_for("get_properties"))
+   
     property_type = mongo.db.type.find().sort("property_type", 1)
     return render_template("list_property.html", property_type=property_type)
 
