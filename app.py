@@ -25,6 +25,15 @@ def get_properties():
     return render_template("properties.html", properties=properties, houses=houses)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    featured = mongo.db.properties.find()
+    properties = list(mongo.db.properties.find({"$text": {"$search": query}}))
+    return render_template("properties.html", properties=properties, query=query, featured=featured)
+    
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -142,9 +151,7 @@ def edit_property(property_id):
     
     property = mongo.db.properties.find_one({"_id": ObjectId(property_id)})
     property_type = mongo.db.type.find().sort("property_type", 1)
-    return render_template(
-        "edit_property.html", property=property, property_type=property_type
-    )
+    return render_template("edit_property.html", property=property, property_type=property_type)
 
 
 @app.route("/delete_property/<property_id>")

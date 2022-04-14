@@ -3,32 +3,52 @@
 
 <div class="slider">
   <ul class="slides">
-    {% for property in properties %} {% if property.featured %}
+    {% for feature in featured %} {% if feature.featured %}
     <li>
-      <img class="materialboxed" src="{{ property.img_url[0] }}" />
+      <img class="materialboxed" src="{{ feature.img_url[0] }}" />
       <!-- random image -->
       <div class="caption center-align">
-        <h3>{{ property.property_type }} property in {{ property.city }}</h3>
+        <h3>{{ feature.property_type }} property in {{ feature.city }}</h3>
         <h5 class="light grey-text text-lighten-3">
-          {{ property.description }}
+          {{ feature.description }}
         </h5>
-        <h5 class="light grey-text text-lighten-3">£{{ property.price }}</h5>
+        <h5 class="light grey-text text-lighten-3">£{{ feature.price }}</h5>
       </div>
     </li>
     {% endif %} {% endfor %}
   </ul>
 </div>
+</div>
+
+<!-- search bar -->
+<div class="row card-panel">
+    <form action="{{ url_for('search') }}" method="post" class="col s12">
+        <div class="row valign-wrapper center-align">
+            <div class="input-field col s12 m8">
+                <span class="material-icons">search</span>
+                <input type="text" name="query" id="query" class="validate" required>
+                <label for="query">Search Location</label>
+            </div>
+            <div class="col s12 m4">
+                <a href="{{ url_for('get_properties') }}" class="btn">Reset</a>
+                <button type="submit" class="btn">
+                    <span class="material-icons left">search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 <!-- main property section -->
 <div class="col s12 m12 l12">
-    {% for house in houses %}
+    {% for property in properties %}
 	<div class="card large">
 	<div class="card-image">
-	<img src="{{ house.img_url[0] }}" alt="">
+	<img src="{{ property.img_url[0] }}" alt="">
 	</div>
 	<div class="card-content">
-		<p><strong>£{{ house.price }}</strong></p>
-		<p>{{ house.description }}</p>
+		<p><strong>£{{ property.price }}</strong></p>
+		<p>{{ property.description }}</p>
 	</div>
 	<div class="card-action">
 		<a href="#">More Info</a>
