@@ -19,25 +19,35 @@ mongo = PyMongo(app)
 
 @app.route("/")
 @app.route("/get_properties")
+@app.route("/search")
 def get_properties():
     properties = mongo.db.properties.find()
     featured = mongo.db.properties.find()
-    return render_template("properties.html", properties=properties, featured=featured)
+    types = mongo.db.type.find()
+    return render_template("properties.html", properties=properties, featured=featured, types=types)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # query the database for all property types
+    featured = mongo.db.properties.find()
     types = mongo.db.type.find()
     filtered_result = []
+    # gets property type input from dropdown select and renders results 
     if request.method == "POST":
         property_types = request.form.get("propertytype")
-        filtered_result = list(mongo.db.properties.find({'property_type' : property_types}))
-        
-    return render_template("properties.html", types=types, properties=filtered_result)
+        filtered_result = list(mongo.db.properties.find({'property_type' : property_types}))     
+    return render_template("properties.html", types=types, properties=filtered_result, featured=featured)
 
+# renders a new page for more info for each property listing clicked
+@app.route("/property_detail/<property_id>")
+def property_detail(property_id):
+    property_id = mongo.db.properties.find({
+        "_id": ObjectId(property_id),
+    })
+    return render_template("property_detail.html", property_id=property_id)
     
-
+        
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -133,7 +143,6 @@ def list_property():
         mongo.db.properties.insert_one(listing)
         flash("Property Listing Successful!")
         return redirect(url_for("get_properties"))
-        # grabs every instance of property type, need to figure out how to aggregate
     property_type = list(mongo.db.type.find().sort("property_type", 1))
     return render_template("list_property.html", property_type=property_type)
 

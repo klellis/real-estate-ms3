@@ -3,3 +3,8 @@ img {
 	height: 300px; 
     object-fit: cover;
 	}
+
+
+	.slider {
+		min-width: cover;
+	}
