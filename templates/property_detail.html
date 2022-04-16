@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+{% for property in property_id %}
+{{ property.price }} 
+{{ property.description }}
 
-
+{% endfor %}
 
 {% endblock %}
