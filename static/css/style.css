@@ -1,12 +1,16 @@
+body {
+	background-color: #e0f2f1;
+}
+
 
 img {
 	height: 300px; 
     object-fit: cover;
 	}
 
-
 	.slider {
 		min-width: cover;
+		z-index: -999;
 	}
 
 	.full-width{
@@ -17,11 +21,27 @@ img {
 
 	.full-width-content{
 		  position: absolute;
-		  top: 50%;
+		  top: 29%;
 		  left: 50%;
 		  transform: translate(-50%, -50%);
 		}
 		
 	.card-container {
-		margin-top: 500px;
+		margin-top: 50px;
+	}
+
+	.searchbar {
+		margin-top: 330px;
+		
+	}
+
+
+	.wrapper {
+		background-color: #00695c;
+		height: 200px;
+		width: 50%;
+		z-index: -1;
+		border-radius: 20px;
+		justify-content: center;
+		margin-left: 25%;
 	}

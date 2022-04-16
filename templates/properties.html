@@ -18,10 +18,11 @@
     {% endif %} {% endfor %}
   </ul>
 </div>
-
+</div>
 
 <!-- search bar -->
-<div class="row card-">
+<div class="searchbox wrapper center-align">
+<div class="row searchbar container">
     <form action="{{ url_for('search', types=types) }}" method="POST" class="col s12">
         <div class="row valign-wrapper center-align">
             <div class="input-field col s12 m8">
@@ -47,6 +48,7 @@
             </div>
         </div>
     </form>
+</div>
 </div>
 
 <!-- main property section -->
