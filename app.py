@@ -21,17 +21,23 @@ mongo = PyMongo(app)
 @app.route("/get_properties")
 def get_properties():
     properties = mongo.db.properties.find()
-    houses = mongo.db.properties.find()
-    return render_template("properties.html", properties=properties, houses=houses)
+    featured = mongo.db.properties.find()
+    return render_template("properties.html", properties=properties, featured=featured)
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    query = request.form.get("query")
-    featured = mongo.db.properties.find()
-    properties = list(mongo.db.properties.find({"$text": {"$search": query}}))
-    return render_template("properties.html", properties=properties, query=query, featured=featured)
-    
+    # query the database for all property types
+    types = mongo.db.type.find(property_types)
+    if request.method == "POST":
+        property_types= {
+        "property_type": request.form.get("propertytype")}
+        mongo.db.properties.find()
+        
+    return render_template("properties.html", types=types, property_types=property_types)
+
+        
+      
 
 
 @app.route("/register", methods=["GET", "POST"])

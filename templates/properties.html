@@ -22,13 +22,23 @@
 
 <!-- search bar -->
 <div class="row card-panel">
-    <form action="{{ url_for('search') }}" method="post" class="col s12">
+    <form action="{{ url_for('search', types=types) }}" method="POST" class="col s12">
         <div class="row valign-wrapper center-align">
             <div class="input-field col s12 m8">
                 <span class="material-icons">search</span>
-                <input type="text" name="query" id="query" class="validate" required>
+                <input type="text" name="query" id="query" class="validate">
                 <label for="query">Search Location</label>
             </div>
+
+            <div class="input-field col s12">
+                <select name="propertytype" id="propertytype">
+                  <option value="" disabled selected>Choose your option</option>
+                  {% for type in types %}
+                  <option value="{{ type.property_type }}">{{ type.property_type }}</option>
+                  {% endfor %}
+                </select>
+                <label for="propertytype">Property Type</label>
+              </div>
             <div class="col s12 m4">
                 <a href="{{ url_for('get_properties') }}" class="btn">Reset</a>
                 <button type="submit" class="btn">
