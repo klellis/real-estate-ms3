@@ -28,17 +28,15 @@ def get_properties():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # query the database for all property types
-    types = mongo.db.type.find(property_types)
+    types = mongo.db.type.find()
+    filtered_result = []
     if request.method == "POST":
-        property_types= {
-        "property_type": request.form.get("propertytype")}
-        mongo.db.properties.find()
+        property_types = request.form.get("propertytype")
+        filtered_result = list(mongo.db.properties.find({'property_type' : property_types}))
         
-    return render_template("properties.html", types=types, property_types=property_types)
+    return render_template("properties.html", types=types, properties=filtered_result)
 
-        
-      
-
+    
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
