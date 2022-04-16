@@ -1,9 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 {% for property in property_id %}
-{{ property.price }} 
-{{ property.description }}
+
+<!-- Container for the image gallery -->
+<div class="imagecontainer">
+
+    <!-- Full-width images with number text -->
+    <div class="mySlides">
+      <div class="numbertext">1 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[0] }}" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">2 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[1] }}" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">3 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[2] }}" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">4 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[3] }}" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">5 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[4] }}" style="width:100%">
+    </div>
+  
+    <div class="mySlides">
+      <div class="numbertext">6 / 6</div>
+        <img class="slideimg" src="{{ property.img_url[5] }}" style="width:100%">
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
 
 {% endfor %}
-
 {% endblock %}
